@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Lab06_Student">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/BST/Lab06_Student.jar!/" />
+    </SOURCES>
+  </library>
+</component>
