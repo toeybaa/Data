@@ -195,6 +195,41 @@ public class BST {
 
     }
 
+    public int removeBefore(int v) throws Exception
+    {
+        TreeIterator i = (TreeIterator) (find(v));
+        if (i == null) {
+            throw new Exception();
+        }
+        if (i.hasPrevious()) {
+            i.previous();
+        } else {
+            throw new Exception();
+        }
+        if (i.hasPrevious()) {
+            return i.previous();
+        } else {
+            throw new Exception();
+        }
+    }
+
+    public boolean isBST() throws Exception {
+        TreeIterator i = (TreeIterator)(findMin());
+        if (i == null){
+            return true;
+        }
+        int currentdata = i.currentNode.data;
+        while(i.hasNext()){
+            int nextData = i.next();
+            if(currentdata > nextData){
+                return false;
+            }
+            currentdata = nextData;
+
+        }
+        return true;
+    }
+
 
     public static void main(String[] args) throws Exception {
         BSTNode r = new BSTNode(7);

@@ -174,6 +174,33 @@ public class BSTRecursive {
 
         return n2;
     }
+
+    public boolean isBST() {
+        return isBST(this.root);
+    }
+
+    public boolean isBST(BSTNode n) {
+        if (n == null) {
+            return true;
+        }
+        boolean isLeft = isBST(n.left);
+        boolean isRight = isBST(n.right);
+        boolean isLess = isMoreThanOrEqual(n, n.left);
+        boolean isMore = isLessThanOrEqual(n, n.right);
+        return isLeft && isRight && isLess && isMore;
+    }
+
+    public boolean isMoreThanOrEqual(BSTNode n, BSTNode n2) {
+        if (n2 == null) return true;
+        boolean lessOrEqual = n2.data <= n.data;
+        return lessOrEqual && isMoreThanOrEqual(n, n2.left) && isMoreThanOrEqual(n, n2.right);
+    }
+
+    public boolean isLessThanOrEqual(BSTNode n, BSTNode n2) {
+        if (n2 == null) return true;
+        boolean moreOrEqual = n2.data >= n.data;
+        return moreOrEqual && isLessThanOrEqual(n, n2.left) && isLessThanOrEqual(n, n2.right);
+    }
 }// end of class BSTRecursive.
 
 
