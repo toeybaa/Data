@@ -139,6 +139,27 @@ public class LinkedList {
         header.nextNode = n;
     }
 
+    public void setify(){
+        ListIterator i = new ListIterator(header.nextNode);
+        ListIterator j = new ListIterator(header.nextNode);
+        while(i.hasNext()){
+            int tempi = i.currentNode.data;
+            while(j.hasNext()){
+                int tempj = j.currentNode.nextNode.data;
+                if(tempi == tempj){
+                    remove(j);
+                }
+                if(j.hasNext()){
+                    j.next();
+                }
+            }
+            if(i.hasNext()){
+                i.next();
+            }
+            j.currentNode = i.currentNode;
+        }
+    }
+
     public void swap(int x, int y) {
         ListIterator xp = new ListIterator(header);
         ListIterator yp = new ListIterator(header);

@@ -201,6 +201,47 @@ public class BSTRecursive {
         boolean moreOrEqual = n2.data >= n.data;
         return moreOrEqual && isLessThanOrEqual(n, n2.left) && isLessThanOrEqual(n, n2.right);
     }
+
+    private int height(BSTNode n) {
+        if (n == null) return -1;
+        if (n.left == null && n.right == null) return 0;
+        if (height(n.left) >= height(n.right)) {
+            return height(n.left) + 1;
+        } else {
+            return height(n.right) + 1;
+        }
+    }
+
+    public int numNodes(){
+        return numNodes(this.root);
+    }
+    public int numNodes(BSTNode n){
+        if (n == null) return 0;
+        if (n.left == null && n.right == null) return 1;
+        return(numNodes(n.left) + numNodes(n.right) + 1);
+    }
+
+    public int numLeaves() {
+        return numLeaves(this.root);
+    }
+
+    public int numLeaves(BSTNode n){
+        if (n == null) return 0;
+        if (n.left == null && n.right == null) return 1;
+        return(numLeaves(n.left) + numLeaves(n.right));
+
+    }
+
+    public BSTNode findParent(BSTNode n, BSTNode d, BSTNode parent) {
+        if (n == null) return null;
+        if (d == null) return null;
+        if (n == d) return parent;
+        if (d.data >= n.data) {
+            return findParent(n.right, d, n);
+        } else {
+            return findParent(n.left, d, n);
+        }
+    }
 }// end of class BSTRecursive.
 
 
